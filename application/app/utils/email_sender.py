@@ -43,11 +43,10 @@ def send_email(app, recipient, subject, body, sender=None):
             recipients=[recipient],
             body=body
         )
-        app.logger.debug("whataaffaacck2222")
         # Email küldése explicit timeout kezeléssel
         try:
+            
             with mail.connect() as conn:
-                app.logger.debug("conn object is created...")
                 if hasattr(conn, 'host'):
                     conn.host.timeout = 10
                 

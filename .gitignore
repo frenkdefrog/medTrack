@@ -6,3 +6,5 @@ docker/docker-compose.yaml
 application/.env
 application/venv
 application/logs
+gmail.sh
+gmail.py
