@@ -1,0 +1,47 @@
+<!-- app/templates/recommendations/modals/add_recommendation.html -->
+<div class="modal-header">
+    <h5 class="modal-title">Új javaslat hozzáadása</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+    <form id="recommendationForm">
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            {{ form.recommendation_name.label(class="form-label") }}
+            {{ form.recommendation_name(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.doctor.label(class="form-label") }}
+            {{ form.doctor(class="form-control") }}
+        </div>
+        <div class="mb-3 row">
+            <div class="col-6">
+                {{ form.doctor_phone.label(class="form-label") }}
+                {{ form.doctor_phone(class="form-control") }}
+            </div>
+            <div class="col-6">
+                {{ form.doctor_email.label(class="form-label") }}
+                {{ form.doctor_email(class="form-control") }}
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-6">
+                {{ form.recommendation_date.label(class="form-label") }}
+                {{ form.recommendation_date(class="form-control") }}
+            </div>
+            <div class="col-6">
+                {{ form.recommendation_enddate.label(class="form-label") }}
+                {{ form.recommendation_enddate(class="form-control") }}
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.notes.label(class="form-label") }}
+            {{ form.notes(class="form-control", rows="2") }}
+            <div class="form-text">Maximum 1000 karakter</div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+    <button type="submit" form="recommendationForm" class="btn btn-primary">Mentés</button>
+</div>

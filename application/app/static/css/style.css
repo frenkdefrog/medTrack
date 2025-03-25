@@ -1,0 +1,250 @@
+/* app/static/css/style.css */
+/* Általános stílusok */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar stílusok */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Kártya stílusok */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    border: none;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+/* Táblázat stílusok */
+.table {
+    background-color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+}
+
+.table thead th {
+    border-top: none;
+    background-color: #f8f9fa;
+}
+
+/* Modál stílusok */
+.modal-content {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/* Form stílusok */
+.form-control:focus,
+.form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Toast stílusok */
+.toast-container {
+    z-index: 1100;
+}
+
+.toast {
+    background-color: #fff;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+}
+
+/* Gomb stílusok */
+.btn-group .btn {
+    margin: 0 2px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Loading spinner stílusok */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Reszponzív igazítások */
+@media (max-width: 768px) {
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-group {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Animációk */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+/* app/static/css/style.css */
+
+/* Stock management specific styles */
+.stock-warning {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.stock-ok {
+    color: #198754;
+}
+
+.days-remaining {
+    font-weight: bold;
+}
+
+.days-remaining.warning {
+    color: #dc3545;
+}
+
+.days-remaining.ok {
+    color: #198754;
+}
+
+/* Transaction history table styles */
+.transaction-type-initial {
+    color: #0d6efd;  /* bootstrap primary */
+}
+
+.transaction-type-refill {
+    color: #198754;  /* bootstrap success */
+}
+
+.transaction-type-correction {
+    color: #dc3545;  /* bootstrap danger */
+}
+
+/* Stock table responsive styles */
+@media (max-width: 768px) {
+    .stock-table-container {
+        overflow-x: auto;
+    }
+    
+    .stock-table th,
+    .stock-table td {
+        min-width: 100px;
+    }
+}
+
+/* Modal improvements */
+.transaction-modal .form-group {
+    margin-bottom: 1rem;
+}
+
+.history-modal .table {
+    margin-bottom: 0;
+}
+
+/* Tooltip customization */
+.stock-tooltip {
+    font-size: 0.875rem;
+}
+
+ /* Checkbox és badge konténer */
+ .d-flex.align-items-center.gap-2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem !important;
+}
+
+/* Checkbox stílus */
+.medicine-select {
+    width: 1rem !important;
+    height: 1rem !important;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+/* Form-check konténer */
+.form-check {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Badge és checkbox egy sorban */
+.badge {
+    display: inline-flex;
+    align-items: center;
+}
+
+
+/* Email modal stílusok */
+.email-content {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+#selectedMedicinesList {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+#selectedMedicinesList li {
+    margin-bottom: 0.5rem;
+}
+
+#copyEmailBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+#editTemplateBtn {
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+}
+
+.modal-header .btn-close {
+    margin: 0;  /* Eltávolítja az alapértelmezett margót */
+}
+
+.modal-header .d-flex.gap-2 {
+    margin-right: -0.5rem;  /* Kompenzálja a gap-2 jobb oldali térközét */
+}

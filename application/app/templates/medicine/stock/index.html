@@ -1,0 +1,99 @@
+<!-- app/templates/medicine/stock/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div data-user-fullname="{{ user_fullname }}" style="display: none;"></div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Gyógyszerkészlet</h1>
+        <button id="showSelectedBtn" class="btn btn-warning me-2" style="display: none;">
+            <i class="fas fa-list"></i> Gyógyszer felíratása
+        </button>
+        <button id="addTransactionBtn" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Új tranzakció
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Gyógyszer</th>
+                    <th>Aktuális készlet</th>
+                    <th>Napi adag</th>
+                    <th>Elegendő (nap)</th>
+                    <th>Utolsó tranzakció</th>
+                    <th>Következő kiváltás</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.medicine_name }}</td>
+                    <td>{{ stock.current_quantity }}</td>
+                    <td>{{ stock.daily_dosage }}</td>
+                    <td>{{ stock.days_remaining }}</td>
+                    <td>
+                        {% if stock.last_transaction_date %}
+                        {{ stock.last_transaction_date }}
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if stock.warning_date %}
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge {% if stock.can_refill %}bg-danger{% else %}bg-success{% endif %}">
+                                {{ stock.warning_date }}
+                            </span>
+                            {% if stock.can_refill %}
+                            <div class="form-check d-inline-flex align-items-center m-0">
+                                <input class="form-check-input medicine-select" type="checkbox"
+                                    value="{{ stock.medicine_id }}" data-name="{{ stock.medicine_name }}"
+                                    id="medicine-{{ stock.medicine_id }}" title="Kiváltásra jelölés">
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-info view-history-btn" data-id="{{ stock.medicine_id }}"
+                            title="Előzmények">
+                            <i class="fas fa-history"></i>
+                        </button>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dynamicModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Dynamic content -->
+        </div>
+    </div>
+</div>
+
+<!-- Előzmények Modal -->
+{% include 'medicine/stock/modals/history.html' %}
+
+<!-- Email előnézet Modal -->
+{% include 'medicine/stock/modals/email_preview.html' %}
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="module">
+    import { StockHandler } from '/static/js/modules/stockHandler.js';
+    new StockHandler();
+</script>
+{% endblock %}

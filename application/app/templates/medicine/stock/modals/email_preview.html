@@ -1,0 +1,52 @@
+<!-- app/templates/medicine/stock/modals/email_preview.html -->
+<div class="modal fade" id="emailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h5 class="modal-title">Email előnézet</h5>
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-warning btn-sm" id="editTemplateBtn" title="Sablon szerkesztése">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="email-content" id="emailContent" data-template="{{ user_email_template }}">
+                    <!-- A tartalom dinamikusan töltődik be -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+                <button type="button" class="btn btn-primary" id="copyEmailBtn">
+                    <i class="fas fa-copy"></i> Másolás
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Template szerkesztő modal -->
+<div class="modal fade" id="templateEditorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Email sablon szerkesztése</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="templateText">Email sablon</label>
+                    <textarea class="form-control" id="templateText" rows="10"></textarea>
+                    <small class="form-text text-muted">
+                        Használható változók: {medicines} - gyógyszerek listája, {fullname} - az Ön neve
+                    </small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+                <button type="button" class="btn btn-primary" id="saveTemplateBtn">Mentés</button>
+            </div>
+        </div>
+    </div>
+</div>

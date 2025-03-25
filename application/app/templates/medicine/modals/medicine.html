@@ -1,0 +1,55 @@
+<!-- app/templates/medicine/modals/add_medicine.html -->
+<div class="modal-header">
+    <h5 class="modal-title">Új gyógyszer hozzáadása</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+    <form id="medicineForm">
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="mb-3 row">
+            <div class="col-6">
+                {{ form.default_dosage.label(class="form-label") }}
+                {{ form.default_dosage(class="form-control") }}
+            </div>
+            <div class="col-6">
+                {{ form.default_packaging.label(class="form-label") }}
+                {{ form.default_packaging(class="form-control") }}
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                {{ form.has_suggestion(class="form-check-input", id="has_suggestion") }}
+                {{ form.has_suggestion.label(class="form-check-label") }}
+            </div>
+            <div id="suggestionSelectDiv" style="display: none;" class="mt-2">
+                {{ form.suggestion_id(class="form-select") }}
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.warning_threshold.label(class="form-label") }}
+            {{ form.warning_threshold(class="form-control") }}
+            {% if form.warning_threshold.errors %}
+                {% for error in form.warning_threshold.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.link.label(class="form-label") }}
+            {{ form.link(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label(class="form-label") }}
+            {{ form.description(class="form-control") }}
+            <div class="form-text">Maximum 2000 karakter</div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+    <button type="submit" form="medicineForm" class="btn btn-primary">Mentés</button>
+</div>
