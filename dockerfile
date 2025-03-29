@@ -2,14 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /usr/src/app
 
-COPY ../application/requirements.txt .
+COPY ./application/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-COPY ../application/app ./app
-COPY ../application/run.py .
-COPY ../application/env_for_docker ./.env
-COPY ../application/wsgi.py .
+COPY ./application/app ./app
+COPY ./application/run.py .
+COPY ./docker/.env_for_docker ./.env
+COPY ./application/wsgi.py .
 
 EXPOSE 5000
 # RUN chmod +x run.py

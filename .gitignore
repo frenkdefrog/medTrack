@@ -1,8 +1,8 @@
 # .gitignore
 __pycache__
 venv
-docker/docker_volumes
-docker/docker-compose.yaml
+docker_volumes
+docker-compose.yaml
 application/.env
 application/venv
 application/logs

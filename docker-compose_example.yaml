@@ -1,22 +1,22 @@
 services:
   web:
-    image: medtrack:latest
+    image: medtrack:0.1
     ports:
       - "5000:5000"
     environment:
-      SECRET_KEY: "changme"
-      MONGO_USERNAME: "changme"
-      MONGO_PASSWORD: "changme"
-      MONGO_HOST: "mongodb"
-      MONGO_PORT: "27017"
-      MONGO_DB: "changme"
+      SECRET_KEY: "changeme"
+      MONGO_USERNAME: "changeme"
+      MONGO_PASSWORD: "changeme"
+      MONGO_HOST: "changeme"
+      MONGO_PORT: "changeme"
+      MONGO_DB: "changeme"
       STOCK_WARNING_TRESHOLD: "5"
       MAIL_SERVER: "smtp.gmail.com"
       MAIL_PORT: "587"
       MAIL_USE_TLS: "True"
-      MAIL_USERNAME: "changme"
-      MAIL_PASSWORD: "changme"
-      MAIL_DEFAULT_SENDER: "changme"
+      MAIL_USERNAME: "changeme@gmail.com"
+      MAIL_PASSWORD: "changeme"
+      MAIL_DEFAULT_SENDER: "changeme"
       ENABLE_MEDICINE_CHECKER: "True"
       MEDICINE_CHECK_INTERVAL: "3"
       LOG_TYPE: "STDOUT"
@@ -30,12 +30,12 @@ services:
   mongodb:
     image: mongo:latest
     environment:
-      MONGO_INITDB_ROOT_USERNAME: "changme"
-      MONGO_INITDB_ROOT_PASSWORD: "changme"
-      MONGO_INITDB_DATABASE: "medapp"
+      MONGO_INITDB_ROOT_USERNAME: "changeme"
+      MONGO_INITDB_ROOT_PASSWORD: "changeme"
+      MONGO_INITDB_DATABASE: "changeme"
     ports:
       - "27017:27017"
     volumes:
-      - ./docker/volumes/mongodb_data:/data/db
+      - ./docker_volumes/mongodb_data:/data/db
       - ./docker/components/mongo/init-mongo.sh:/tmp/init-mongo.sh:ro
     command: ["/bin/bash", "/tmp/init-mongo.sh", "docker-entrypoint.sh", "mongod"]
