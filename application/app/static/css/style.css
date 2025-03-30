@@ -1,136 +1,131 @@
 /* app/static/css/style.css */
-/* Általános stílusok */
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --border-color: rgba(0,0,0,.1);
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    --shadow-md: 0 0.5rem 1rem rgba(0,0,0,.15);
+    --transition-speed: 200ms;
+}
+
+/* Reset és alapstílusok */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--light-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Navbar stílusok */
+/* Komponens stílusok */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Kártya stílusok */
 .card {
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    box-shadow: var(--shadow-sm);
     border: none;
+    border-radius: 0.5rem;
 }
 
 .card-header {
     background-color: #fff;
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Táblázat stílusok */
 .table {
     background-color: #fff;
     border-radius: 0.25rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    box-shadow: var(--shadow-sm);
 }
 
 .table thead th {
     border-top: none;
-    background-color: #f8f9fa;
+    background-color: var(--light-bg);
 }
 
 /* Modál stílusok */
 .modal-content {
     border: none;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    box-shadow: var(--shadow-md);
 }
 
-.modal-header {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
+.modal-header,
 .modal-footer {
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-color: var(--border-color);
 }
 
 /* Form stílusok */
+.form-group {
+    margin-bottom: 1rem;
+}
+
 .form-control:focus,
 .form-select:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+/* Custom checkbox wrapper */
+.custom-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0;
+}
+
+.form-check-input {
+    margin: 0;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+/* Gomb stílusok */
+.btn {
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
 }
 
 /* Toast stílusok */
 .toast-container {
     z-index: 1100;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
 }
 
 .toast {
     background-color: #fff;
-    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Gomb stílusok */
-.btn-group .btn {
-    margin: 0 2px;
-}
-
-.btn-primary {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-
-.btn-primary:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
-}
-
-/* Loading spinner stílusok */
-.loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-/* Reszponzív igazítások */
-@media (max-width: 768px) {
-    .table-responsive {
-        margin-bottom: 1rem;
-    }
-    
-    .btn-group {
-        display: flex;
-        justify-content: flex-start;
-    }
-    
-    .modal-dialog {
-        margin: 0.5rem;
-    }
-}
-
-/* Animációk */
-.fade-enter {
-    opacity: 0;
-}
-
-.fade-enter-active {
-    opacity: 1;
-    transition: opacity 200ms ease-in;
-}
-
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit-active {
-    opacity: 0;
-    transition: opacity 200ms ease-in;
-}
-
-/* app/static/css/style.css */
-
-/* Stock management specific styles */
+/* Stock management stílusok */
 .stock-warning {
-    color: #dc3545;
+    color: var(--danger-color);
     font-weight: bold;
 }
 
 .stock-ok {
-    color: #198754;
+    color: var(--success-color);
 }
 
 .days-remaining {
@@ -138,30 +133,27 @@ body {
 }
 
 .days-remaining.warning {
-    color: #dc3545;
+    color: var(--danger-color);
 }
 
 .days-remaining.ok {
-    color: #198754;
+    color: var(--success-color);
 }
 
-/* Transaction history table styles */
-.transaction-type-initial {
-    color: #0d6efd;  /* bootstrap primary */
-}
-
-.transaction-type-refill {
-    color: #198754;  /* bootstrap success */
-}
-
-.transaction-type-correction {
-    color: #dc3545;  /* bootstrap danger */
-}
-
-/* Stock table responsive styles */
+/* Reszponzív beállítások */
 @media (max-width: 768px) {
-    .stock-table-container {
-        overflow-x: auto;
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
     }
     
     .stock-table th,
@@ -170,81 +162,25 @@ body {
     }
 }
 
-/* Modal improvements */
-.transaction-modal .form-group {
-    margin-bottom: 1rem;
+/* Animációk */
+.fade-enter,
+.fade-exit {
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease-in;
 }
 
-.history-modal .table {
-    margin-bottom: 0;
+.fade-enter-active {
+    opacity: 1;
 }
 
-/* Tooltip customization */
-.stock-tooltip {
-    font-size: 0.875rem;
-}
-
- /* Checkbox és badge konténer */
- .d-flex.align-items-center.gap-2 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem !important;
-}
-
-/* Checkbox stílus */
-.medicine-select {
-    width: 1rem !important;
-    height: 1rem !important;
-    margin: 0 !important;
-    cursor: pointer;
-}
-
-/* Form-check konténer */
-.form-check {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-/* Badge és checkbox egy sorban */
-.badge {
-    display: inline-flex;
-    align-items: center;
-}
-
-
-/* Email modal stílusok */
-.email-content {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
-#selectedMedicinesList {
-    margin: 1rem 0;
-    padding-left: 2rem;
-}
-
-#selectedMedicinesList li {
-    margin-bottom: 0.5rem;
-}
-
-#copyEmailBtn {
-    display: flex;
-    align-items: center;
+/* Utility classes */
+.gap-2 {
     gap: 0.5rem;
 }
 
-
-#editTemplateBtn {
-    padding: 0.25rem 0.5rem;
-    line-height: 1;
-}
-
-.modal-header .btn-close {
-    margin: 0;  /* Eltávolítja az alapértelmezett margót */
-}
-
-.modal-header .d-flex.gap-2 {
-    margin-right: -0.5rem;  /* Kompenzálja a gap-2 jobb oldali térközét */
+.invalid-feedback {
+    display: block;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }

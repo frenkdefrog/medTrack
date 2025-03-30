@@ -1,0 +1,6 @@
+# app/health/__init__.py
+from flask import Blueprint
+
+bp = Blueprint('health', __name__)
+
+from app.health import routes

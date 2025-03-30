@@ -4,45 +4,45 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
-    <form id="medicineForm">
+    <form id="medicineForm" class="medicine-form">
         {{ form.csrf_token }}
-        <div class="mb-3">
+        <div class="form-group mb-3">
             {{ form.name.label(class="form-label") }}
             {{ form.name(class="form-control") }}
         </div>
-        <div class="mb-3 row">
-            <div class="col-6">
+        <div class="row mb-3">
+            <div class="col-md-6">
                 {{ form.default_dosage.label(class="form-label") }}
                 {{ form.default_dosage(class="form-control") }}
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 {{ form.default_packaging.label(class="form-label") }}
                 {{ form.default_packaging(class="form-control") }}
             </div>
         </div>
-        <div class="mb-3">
-            <div class="form-check">
+        <div class="form-group mb-3">
+            <div class="custom-checkbox-wrapper">
                 {{ form.has_suggestion(class="form-check-input", id="has_suggestion") }}
-                {{ form.has_suggestion.label(class="form-check-label") }}
+                {{ form.has_suggestion.label(class="form-check-label ms-2") }}
             </div>
             <div id="suggestionSelectDiv" style="display: none;" class="mt-2">
                 {{ form.suggestion_id(class="form-select") }}
             </div>
         </div>
-        <div class="mb-3">
+        <div class="form-group mb-3">
             {{ form.warning_threshold.label(class="form-label") }}
             {{ form.warning_threshold(class="form-control") }}
             {% if form.warning_threshold.errors %}
                 {% for error in form.warning_threshold.errors %}
-                    <span class="text-danger">{{ error }}</span>
+                    <div class="invalid-feedback d-block">{{ error }}</div>
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="mb-3">
+        <div class="form-group mb-3">
             {{ form.link.label(class="form-label") }}
             {{ form.link(class="form-control") }}
         </div>
-        <div class="mb-3">
+        <div class="form-group mb-3">
             {{ form.description.label(class="form-label") }}
             {{ form.description(class="form-control") }}
             <div class="form-text">Maximum 2000 karakter</div>

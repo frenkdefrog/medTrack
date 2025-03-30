@@ -9,8 +9,8 @@ from flask import Flask, redirect, url_for, request, jsonify, session, render_te
 from flask.json import JSONEncoder
 from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
-from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect, CSRFError
+from flask_mail import Mail
 from bson import ObjectId
 from app.config import Config
 
@@ -132,10 +132,12 @@ def register_blueprints(app):
     from app.auth import bp as auth_bp
     from app.medicine import bp as medicine_bp
     from app.recommendations import bp as recommendations_bp
+    from app.health import bp as health_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(medicine_bp, url_prefix='/medicine')
     app.register_blueprint(recommendations_bp, url_prefix='/recoms')
+    app.register_blueprint(health_bp)
 
 def create_app(config_class=Config):
     """Flask alkalmazás létrehozása"""
